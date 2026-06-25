@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard — DisasterGuard</title>
+  <meta name="description" content="Your personal DisasterGuard dashboard for emergency alerts, resources, and community support.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <style>
+    body { cursor: default; }
+    a, button, [role="button"], input, select, textarea, label, .quick-action-btn, .resource-item, .dashboard-notify, .badge-role, .sidebar-menu a, .card-header a, .stat-icon { cursor: pointer; }
+    .dashboard-topbar { display: flex; align-items: center; padding: 12px 24px; background: var(--card-bg); border-bottom: 1px solid var(--card-border); position: relative; z-index: 10; }
+    .dashboard-topbar .logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .dashboard-topbar .logo-link svg { flex-shrink: 0; }
+    .dashboard-topbar .logo-text { font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  </style>
+</head>
+<body>
+
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="dashboard-topbar">
+    <a href="index.html" class="logo-link">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect x="2" y="18" width="28" height="10" rx="3" fill="url(#sg1)"/>
+        <rect x="4" y="10" width="24" height="10" rx="3" fill="url(#sg2)"/>
+        <rect x="7" y="2" width="18" height="10" rx="3" fill="url(#sg3)"/>
+        <defs>
+          <linearGradient id="sg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff3b30"/><stop offset="100%" stop-color="#ff9500"/></linearGradient>
+          <linearGradient id="sg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff9500"/><stop offset="100%" stop-color="#00b4d8"/></linearGradient>
+          <linearGradient id="sg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00b4d8"/><stop offset="100%" stop-color="#7b2ff7"/></linearGradient>
+        </defs>
+      </svg>
+      <span class="logo-text">STACKLY</span>
+    </a>
+  </div>
+
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-heading">Main</div>
+      <ul class="sidebar-menu">
+        <li><a href="#dashboard" class="active" data-section="dashboard"><i class="fas fa-chart-pie"></i> Dashboard</a></li>
+        <li><a href="#alerts" data-section="alerts"><i class="fas fa-bell"></i> My Alerts</a></li>
+        <li><a href="#saved-resources" data-section="saved-resources"><i class="fas fa-bookmark"></i> Saved Resources</a></li>
+        <li><a href="#emergency-contacts" data-section="emergency-contacts"><i class="fas fa-phone"></i> Emergency Contacts</a></li>
+      </ul>
+      <div class="sidebar-heading">Community</div>
+      <ul class="sidebar-menu">
+        <li><a href="#community-board" data-section="community-board"><i class="fas fa-comments"></i> Community Board</a></li>
+        <li><a href="#volunteer" data-section="volunteer"><i class="fas fa-hand-holding-heart"></i> Volunteer</a></li>
+        <li><a href="#training-events" data-section="training-events"><i class="fas fa-calendar-alt"></i> Training Events</a></li>
+      </ul>
+      <div class="sidebar-heading">Account</div>
+      <ul class="sidebar-menu">
+        <li><a href="#profile" data-section="profile"><i class="fas fa-user-cog"></i> Profile</a></li>
+        <li><a href="#safety-settings" data-section="safety-settings"><i class="fas fa-shield-alt"></i> Safety Settings</a></li>
+        <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </aside>
+
+    <div class="dashboard-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="dashboard-main">
+      <div class="dashboard-header">
+        <div>
+          <h1>My Dashboard</h1>
+          <p>Welcome back, James. Stay safe and prepared.</p>
+        </div>
+        <div class="dashboard-header-right">
+          <button class="dashboard-notify" id="mobileSidebarToggle" style="display:none;">
+            <i class="fas fa-bars"></i>
+          </button>
+          <a href="404.html" class="dashboard-notify">
+            <i class="fas fa-bell"></i>
+            <span class="badge-dot"></span>
+          </a>
+          <div class="dashboard-avatar">J</div>
+        </div>
+      </div>
+
+      <div id="section-dashboard" class="dashboard-section active">
+        <div class="dashboard-stats">
+          <div class="dashboard-stat-card">
+            <div class="stat-top">
+              <div class="stat-icon orange"><i class="fas fa-bell"></i></div>
+              <i class="fas fa-arrow-up" style="color:#22c55e;font-size:0.85rem;"></i>
+            </div>
+            <div class="stat-number">3</div>
+            <div class="stat-label">Active Alerts in Your Area</div>
+            <div class="stat-change up">+1 new today</div>
+          </div>
+          <div class="dashboard-stat-card">
+            <div class="stat-top">
+              <div class="stat-icon blue"><i class="fas fa-bookmark"></i></div>
+              <i class="fas fa-arrow-up" style="color:#22c55e;font-size:0.85rem;"></i>
+            </div>
+            <div class="stat-number">12</div>
+            <div class="stat-label">Saved Resources</div>
+            <div class="stat-change up">+2 this week</div>
+          </div>
+          <div class="dashboard-stat-card">
+            <div class="stat-top">
+              <div class="stat-icon teal"><i class="fas fa-star"></i></div>
+              <i class="fas fa-arrow-up" style="color:#22c55e;font-size:0.85rem;"></i>
+            </div>
+            <div class="stat-number">850</div>
+            <div class="stat-label">Community Points</div>
+            <div class="stat-change up">+50 this month</div>
+          </div>
+          <div class="dashboard-stat-card">
+            <div class="stat-top">
+              <div class="stat-icon purple"><i class="fas fa-kit-medical"></i></div>
+              <i class="fas fa-check" style="color:#22c55e;font-size:0.85rem;"></i>
+            </div>
+            <div class="stat-number">Ready</div>
+            <div class="stat-label">Emergency Kit Status</div>
+            <div class="stat-change up">Checklist complete</div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-bell" style="color:var(--secondary);margin-right:8px;"></i> Alerts in Your Area</h3>
+              <a href="404.html">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card-body">
+              <div class="alert-list-item">
+                <div class="alert-dot critical"></div>
+                <div class="alert-text">
+                  <strong>Hurricane Warning — Coastal Zone</strong>
+                  <span>Evacuation recommended. Prepare emergency kit.</span>
+                </div>
+                <div class="alert-time">5m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Flood Advisory — Riverside</strong>
+                  <span>Water levels rising. Avoid low-lying areas.</span>
+                </div>
+                <div class="alert-time">18m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Wildfire Smoke Advisory</strong>
+                  <span>Air quality moderate. Limit outdoor activity.</span>
+                </div>
+                <div class="alert-time">1h ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Severe Thunderstorm Watch</strong>
+                  <span>High winds expected. Secure loose items.</span>
+                </div>
+                <div class="alert-time">2h ago</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-boxes" style="color:var(--accent);margin-right:8px;"></i> Quick Resources</h3>
+              <a href="404.html">Browse All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card-body">
+              <div class="resource-grid">
+                <div class="resource-item">
+                  <i class="fas fa-file-pdf red"></i>
+                  <div class="res-text">
+                    <strong>Hurricane Prep Guide</strong>
+                    <span>Download PDF</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-file-pdf orange"></i>
+                  <div class="res-text">
+                    <strong>Emergency Kit Checklist</strong>
+                    <span>Download PDF</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-video blue"></i>
+                  <div class="res-text">
+                    <strong>First Aid Tutorial</strong>
+                    <span>Watch video</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-map-marked-alt purple"></i>
+                  <div class="res-text">
+                    <strong>Evacuation Routes</strong>
+                    <span>View map</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-phone-alt teal"></i>
+                  <div class="res-text">
+                    <strong>Emergency Hotline</strong>
+                    <span>Call now</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-hands-helping red"></i>
+                  <div class="res-text">
+                    <strong>Volunteer Network</strong>
+                    <span>Join today</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-user" style="color:var(--primary);margin-right:8px;"></i> My Profile</h3>
+              <a href="404.html">Edit <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card-body">
+              <div class="profile-card">
+                <div class="profile-avatar">J</div>
+                <div class="profile-info">
+                  <h4>James Wilson</h4>
+                  <p>james.wilson@email.com</p>
+                  <span class="badge-member">Verified Member</span>
+                </div>
+              </div>
+              <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.85rem;">
+                <div>
+                  <span style="color:var(--text-light);">Location</span>
+                  <div style="color:var(--white);font-weight:600;">Coastal City, CA</div>
+                </div>
+                <div>
+                  <span style="color:var(--text-light);">Member Since</span>
+                  <div style="color:var(--white);font-weight:600;">January 2025</div>
+                </div>
+                <div>
+                  <span style="color:var(--text-light);">Emergency Contact</span>
+                  <div style="color:var(--white);font-weight:600;">+1 (555) 234-5678</div>
+                </div>
+                <div>
+                  <span style="color:var(--text-light);">Notifications</span>
+                  <div style="color:#22c55e;font-weight:600;"><i class="fas fa-circle" style="font-size:0.5rem;vertical-align:middle;margin-right:4px;"></i> SMS & Email</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-tasks" style="color:var(--secondary);margin-right:8px;"></i> Preparedness Checklist</h3>
+            </div>
+            <div class="card-body">
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.03);border:1px solid var(--card-border);">
+                  <i class="fas fa-check-circle" style="color:#22c55e;"></i>
+                  <span style="font-size:0.85rem;">Emergency kit prepared</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.03);border:1px solid var(--card-border);">
+                  <i class="fas fa-check-circle" style="color:#22c55e;"></i>
+                  <span style="font-size:0.85rem;">Family communication plan</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.03);border:1px solid var(--card-border);">
+                  <i class="fas fa-check-circle" style="color:#22c55e;"></i>
+                  <span style="font-size:0.85rem;">Evacuation route mapped</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.03);border:1px solid var(--card-border);">
+                  <i class="fas fa-circle" style="color:var(--text-light);"></i>
+                  <span style="font-size:0.85rem;color:var(--text-light);">Insurance documents backed up</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.03);border:1px solid var(--card-border);">
+                  <i class="fas fa-circle" style="color:var(--text-light);"></i>
+                  <span style="font-size:0.85rem;color:var(--text-light);">Pet emergency plan</span>
+                </div>
+                <a href="404.html" style="display:block;text-align:center;margin-top:8px;font-size:0.85rem;color:var(--primary);font-weight:500;">View Full Checklist <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-alerts" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card" style="grid-column: span 2;">
+            <div class="card-header">
+              <h3><i class="fas fa-bell" style="color:var(--secondary);margin-right:8px;"></i> My Alerts</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="alert-list-item">
+                <div class="alert-dot critical"></div>
+                <div class="alert-text">
+                  <strong>Hurricane Warning — Coastal Zone</strong>
+                  <span>Evacuation recommended. Prepare emergency kit.</span>
+                </div>
+                <div class="alert-time">5m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Flood Advisory — Riverside</strong>
+                  <span>Water levels rising. Avoid low-lying areas.</span>
+                </div>
+                <div class="alert-time">18m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot critical"></div>
+                <div class="alert-text">
+                  <strong>Earthquake Aftershock — North Ridge</strong>
+                  <span>Magnitude 4.2 aftershock detected. Stay sheltered.</span>
+                </div>
+                <div class="alert-time">42m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Wildfire Smoke Advisory</strong>
+                  <span>Air quality moderate. Limit outdoor activity.</span>
+                </div>
+                <div class="alert-time">1h ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Severe Thunderstorm Watch</strong>
+                  <span>High winds expected. Secure loose items.</span>
+                </div>
+                <div class="alert-time">2h ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot critical"></div>
+                <div class="alert-text">
+                  <strong>Tornado Warning — Central County</strong>
+                  <span>Take shelter immediately. Seek basement or interior room.</span>
+                </div>
+                <div class="alert-time">3h ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-saved-resources" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-bookmark" style="color:var(--accent);margin-right:8px;"></i> Saved Resources</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="resource-grid">
+                <div class="resource-item">
+                  <i class="fas fa-file-pdf red"></i>
+                  <div class="res-text">
+                    <strong>Hurricane Prep Guide</strong>
+                    <span>Downloaded 3 times</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-file-pdf orange"></i>
+                  <div class="res-text">
+                    <strong>Emergency Kit Checklist</strong>
+                    <span>Downloaded 5 times</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-video blue"></i>
+                  <div class="res-text">
+                    <strong>First Aid Tutorial</strong>
+                    <span>Last watched 2d ago</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-map-marked-alt purple"></i>
+                  <div class="res-text">
+                    <strong>Evacuation Routes</strong>
+                    <span>Updated 1w ago</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-phone-alt teal"></i>
+                  <div class="res-text">
+                    <strong>Emergency Hotline</strong>
+                    <span>Call +1 (800) 555-0199</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-hands-helping red"></i>
+                  <div class="res-text">
+                    <strong>Volunteer Network</strong>
+                    <span>5 upcoming events</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-clock" style="color:var(--primary);margin-right:8px;"></i> Recently Accessed</h3>
+            </div>
+            <div class="card-body">
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Flood Safety Guide</strong>
+                  <span>Viewed 2 days ago</span>
+                </div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Family Emergency Plan Template</strong>
+                  <span>Viewed 5 days ago</span>
+                </div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Pet Disaster Preparedness</strong>
+                  <span>Viewed 1 week ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-emergency-contacts" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-phone" style="color:var(--secondary);margin-right:8px;"></i> Emergency Contacts</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="resource-grid">
+                <div class="resource-item">
+                  <i class="fas fa-ambulance red"></i>
+                  <div class="res-text">
+                    <strong>Emergency Services</strong>
+                    <span>911</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-fire-extinguisher orange"></i>
+                  <div class="res-text">
+                    <strong>Fire Department</strong>
+                    <span>(555) 123-4567</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-shield-halved blue"></i>
+                  <div class="res-text">
+                    <strong>Police Department</strong>
+                    <span>(555) 123-4568</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-truck-medical purple"></i>
+                  <div class="res-text">
+                    <strong>Medical Emergency</strong>
+                    <span>(555) 123-4569</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-house-chimney-crack teal"></i>
+                  <div class="res-text">
+                    <strong>Disaster Relief Hotline</strong>
+                    <span>1-800-555-0199</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-tree red"></i>
+                  <div class="res-text">
+                    <strong>Poison Control</strong>
+                    <span>1-800-222-1222</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-user-friends" style="color:var(--accent);margin-right:8px;"></i> My Personal Contacts</h3>
+            </div>
+            <div class="card-body">
+              <div class="dashboard-table-wrapper">
+              <table class="dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Relation</th>
+                    <th>Phone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-red">LW</div>
+                        <span>Lisa Wilson</span>
+                      </div>
+                    </td>
+                    <td>Spouse</td>
+                    <td style="color:var(--white);">(555) 234-5678</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-blue">MW</div>
+                        <span>Mark Wilson</span>
+                      </div>
+                    </td>
+                    <td>Brother</td>
+                    <td style="color:var(--white);">(555) 345-6789</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-orange">AJ</div>
+                        <span>Alice Johnson</span>
+                      </div>
+                    </td>
+                    <td>Neighbor</td>
+                    <td style="color:var(--white);">(555) 456-7890</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-community-board" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card" style="grid-column: span 2;">
+            <div class="card-header">
+              <h3><i class="fas fa-comments" style="color:var(--primary);margin-right:8px;"></i> Community Board</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Community Meeting Tonight</strong>
+                  <span>7:00 PM at the Community Center — Discussing flood preparedness plans.</span>
+                </div>
+                <div class="alert-time">2h ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Volunteers Needed for Sandbagging</strong>
+                  <span>River District needs volunteers at 8 AM tomorrow. Sign up here.</span>
+                </div>
+                <div class="alert-time">5h ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot critical"></div>
+                <div class="alert-text">
+                  <strong>Power Outage Update — Zone B</strong>
+                  <span>Crews are working to restore power. Estimated restoration by 8 PM.</span>
+                </div>
+                <div class="alert-time">8h ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Free Emergency Kit Distribution</strong>
+                  <span>Saturday 10 AM–4 PM at the Library. First come, first served.</span>
+                </div>
+                <div class="alert-time">1d ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Lost & Found — Pet Shelter Update</strong>
+                  <span>Temporary pet shelter set up at the High School gymnasium.</span>
+                </div>
+                <div class="alert-time">2d ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-volunteer" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-hand-holding-heart" style="color:var(--secondary);margin-right:8px;"></i> Volunteer Opportunities</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Sandbagging — River District</strong>
+                  <span>Tomorrow 8 AM · 12 volunteers needed</span>
+                </div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Shelter Support — Community Center</strong>
+                  <span>Ongoing · 6 volunteers needed</span>
+                </div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Food Distribution — Food Bank</strong>
+                  <span>Saturday 10 AM · 8 volunteers needed</span>
+                </div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>First Aid Training — Certification</strong>
+                  <span>May 15 · 20 spots available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-star" style="color:var(--accent);margin-right:8px;"></i> My Volunteer Stats</h3>
+            </div>
+            <div class="card-body">
+              <div class="resource-grid">
+                <div class="resource-item">
+                  <i class="fas fa-calendar-check teal"></i>
+                  <div class="res-text">
+                    <strong>Events Attended</strong>
+                    <span>12</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-clock red"></i>
+                  <div class="res-text">
+                    <strong>Total Hours</strong>
+                    <span>48 hours</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-trophy orange"></i>
+                  <div class="res-text">
+                    <strong>Community Rank</strong>
+                    <span>Silver Volunteer</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-users blue"></i>
+                  <div class="res-text">
+                    <strong>People Helped</strong>
+                    <span>~200</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-training-events" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card" style="grid-column: span 2;">
+            <div class="card-header">
+              <h3><i class="fas fa-calendar-alt" style="color:var(--purple);margin-right:8px;"></i> Training Events</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="dashboard-table-wrapper">
+              <table class="dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Event</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Spots</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">Emergency First Aid</td>
+                    <td style="color:var(--text-light);">May 5, 2026</td>
+                    <td style="color:var(--text-light);">10:00 AM</td>
+                    <td style="color:var(--text-light);">12 / 30</td>
+                    <td><span class="badge-status active">Open</span></td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">CPR Certification</td>
+                    <td style="color:var(--text-light);">May 12, 2026</td>
+                    <td style="color:var(--text-light);">9:00 AM</td>
+                    <td style="color:var(--text-light);">8 / 20</td>
+                    <td><span class="badge-status active">Open</span></td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">Disaster Preparedness Workshop</td>
+                    <td style="color:var(--text-light);">May 18, 2026</td>
+                    <td style="color:var(--text-light);">2:00 PM</td>
+                    <td style="color:var(--text-light);">25 / 40</td>
+                    <td><span class="badge-status active">Open</span></td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">Evacuation Drill</td>
+                    <td style="color:var(--text-light);">May 22, 2026</td>
+                    <td style="color:var(--text-light);">11:00 AM</td>
+                    <td style="color:var(--text-light);">0 / 50</td>
+                    <td><span class="badge-status suspended">Full</span></td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">Search & Rescue Fundamentals</td>
+                    <td style="color:var(--text-light);">June 2, 2026</td>
+                    <td style="color:var(--text-light);">8:00 AM</td>
+                    <td style="color:var(--text-light);">18 / 25</td>
+                    <td><span class="badge-status pending">Almost Full</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-profile" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-user-cog" style="color:var(--primary);margin-right:8px;"></i> My Profile</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="profile-card">
+                <div class="profile-avatar">J</div>
+                <div class="profile-info">
+                  <h4>James Wilson</h4>
+                  <p>james.wilson@email.com</p>
+                  <span class="badge-member">Verified Member</span>
+                </div>
+              </div>
+              <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.85rem;">
+                <div>
+                  <span style="color:var(--text-light);">Full Name</span>
+                  <div style="color:var(--white);font-weight:600;">James Wilson</div>
+                </div>
+                <div>
+                  <span style="color:var(--text-light);">Email</span>
+                  <div style="color:var(--white);font-weight:600;">james.wilson@email.com</div>
+                </div>
+                <div>
+                  <span style="color:var(--text-light);">Location</span>
+                  <div style="color:var(--white);font-weight:600;">Coastal City, CA</div>
+                </div>
+                <div>
+                  <span style="color:var(--text-light);">Member Since</span>
+                  <div style="color:var(--white);font-weight:600;">January 2025</div>
+                </div>
+                <div>
+                  <span style="color:var(--text-light);">Emergency Contact</span>
+                  <div style="color:var(--white);font-weight:600;">+1 (555) 234-5678</div>
+                </div>
+                <div>
+                  <span style="color:var(--text-light);">Notifications</span>
+                  <div style="color:#22c55e;font-weight:600;"><i class="fas fa-circle" style="font-size:0.5rem;vertical-align:middle;margin-right:4px;"></i> SMS & Email</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-key" style="color:var(--secondary);margin-right:8px;"></i> Change Password</h3>
+            </div>
+            <div class="card-body">
+              <div class="change-password-form" style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <label style="font-size:0.8rem;color:var(--text-light);">Current Password</label>
+                  <input type="password" placeholder="Enter current password" style="padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--card-border);background:rgba(255,255,255,0.03);color:var(--white);font-size:0.85rem;">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <label style="font-size:0.8rem;color:var(--text-light);">New Password</label>
+                  <input type="password" placeholder="Enter new password" style="padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--card-border);background:rgba(255,255,255,0.03);color:var(--white);font-size:0.85rem;">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <label style="font-size:0.8rem;color:var(--text-light);">Confirm New Password</label>
+                  <input type="password" placeholder="Confirm new password" style="padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--card-border);background:rgba(255,255,255,0.03);color:var(--white);font-size:0.85rem;">
+                </div>
+                <a href="404.html" class="btn-hero-primary" style="padding:10px 20px;font-size:0.85rem;display:inline-block;width:fit-content;">Update Password</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-safety-settings" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-shield-alt" style="color:var(--accent);margin-right:8px;"></i> Safety Settings</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div class="setting-item">
+                  <span>Push Notifications</span>
+                  <span style="color:#22c55e;">On</span>
+                </div>
+                <div class="setting-item">
+                  <span>SMS Alerts</span>
+                  <span style="color:#22c55e;">On</span>
+                </div>
+                <div class="setting-item">
+                  <span>Email Alerts</span>
+                  <span style="color:#22c55e;">On</span>
+                </div>
+                <div class="setting-item">
+                  <span>Location Sharing</span>
+                  <span style="color:var(--secondary);">Emergency Only</span>
+                </div>
+                <div class="setting-item">
+                  <span>Auto-download Safety Guides</span>
+                  <span style="color:#22c55e;">On</span>
+                </div>
+                <div class="setting-item">
+                  <span>Silent Mode (Do Not Disturb)</span>
+                  <span style="color:var(--text-light);">Off</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-location-dot" style="color:var(--primary);margin-right:8px;"></i> Emergency Zones</h3>
+            </div>
+            <div class="card-body">
+              <div class="resource-grid">
+                <div class="resource-item">
+                  <i class="fas fa-house-chimney teal"></i>
+                  <div class="res-text">
+                    <strong>Home Zone</strong>
+                    <span>Coastal City, CA — Zone A</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-building red"></i>
+                  <div class="res-text">
+                    <strong>Work Zone</strong>
+                    <span>Downtown — Zone B</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-school orange"></i>
+                  <div class="res-text">
+                    <strong>School Zone</strong>
+                    <span>Lincoln Elementary — Zone A</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+
+  <script src="js/main.js"></script>
+  <script>
+    (function() {
+      const sidebar = document.getElementById('dashboardSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const toggleBtn = document.getElementById('mobileSidebarToggle');
+      const sections = document.querySelectorAll('.dashboard-section');
+      const sidebarLinks = document.querySelectorAll('#dashboardSidebar a[data-section]');
+
+      const sectionMap = {};
+      sections.forEach(function(s) { sectionMap[s.id] = s; });
+
+      function hideAllSections() {
+        sections.forEach(function(s) { s.style.display = 'none'; });
+      }
+
+      function showSection(id) {
+        hideAllSections();
+        var el = sectionMap['section-' + id];
+        if (el) { el.style.display = 'block'; }
+      }
+
+      function deactivateAllLinks() {
+        sidebarLinks.forEach(function(l) { l.classList.remove('active'); });
+      }
+
+      function activateLink(id) {
+        deactivateAllLinks();
+        sidebarLinks.forEach(function(l) {
+          if (l.dataset.section === id) { l.classList.add('active'); }
+        });
+      }
+
+      function navigateTo(sectionId) {
+        showSection(sectionId);
+        activateLink(sectionId);
+        if (sidebar.classList.contains('open')) { toggleSidebar(); }
+      }
+
+      function toggleSidebar() {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('show');
+      }
+
+      sidebarLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var id = this.dataset.section;
+          if (id) { navigateTo(id); }
+        });
+      });
+
+      if (toggleBtn) { toggleBtn.addEventListener('click', toggleSidebar); }
+      overlay.addEventListener('click', toggleSidebar);
+
+      function handleResize() {
+        if (window.innerWidth <= 992) {
+          if (toggleBtn) toggleBtn.style.display = 'flex';
+        } else {
+          if (toggleBtn) toggleBtn.style.display = 'none';
+          sidebar.classList.remove('open');
+          overlay.classList.remove('show');
+        }
+      }
+
+      window.addEventListener('resize', handleResize);
+      handleResize();
+
+      var hash = window.location.hash.replace('#', '');
+      if (hash && sectionMap['section-' + hash]) {
+        navigateTo(hash);
+      } else {
+        navigateTo('dashboard');
+      }
+    })();
+  </script>
+</body>
+</html>

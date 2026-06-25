@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DisasterGuard — Advanced Disaster Management Platform</title>
+  <meta name="description" content="Real-time disaster alerts, AI-powered response coordination, and community preparedness. Protecting lives through technology.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- AMBIENT GLOW ORBS -->
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span><i class="fas fa-phone-alt"></i> +1 (800) 555-0199</span>
+        <span><i class="fas fa-envelope"></i> alert@disasterguard.org</span>
+        <span><i class="fas fa-clock"></i> 24/7 Emergency</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fas fa-user"></i> Login</a>
+        <a href="404.html"><i class="fas fa-headset"></i> Support</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.webp" alt="DisasterGuard" style="height:55px;filter:brightness(0) saturate(100%) invert(58%) sepia(100%) saturate(500%) hue-rotate(-30deg);">
+      </a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="404.html" class="btn-hero-primary" style="padding:10px 24px;font-size:0.85rem;">Get Help</a>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO (dark dramatic) -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1581091226825-a6a2a5ee158?w=1920&q=80">
+      <source src="1080 1 (1).mp4" type="video/mp4">
+      <source src="https://cdn.pixabay.com/video/2019/03/18/22070-325253460_large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          LIVE MONITORING ACTIVE — 4 REGIONS
+        </div>
+        <h1>
+          Advanced<br>
+          <span class="gradient-text">Disaster Management</span><br>
+          <span class="outline-text">Platform</span>
+        </h1>
+        <p>AI-powered real-time threat detection, instant emergency alerts, and coordinated response systems protecting communities across the globe.</p>
+        <div class="hero-buttons">
+          <a href="404.html" class="btn-hero-primary">
+            <i class="fas fa-bell"></i> Explore Services
+          </a>
+          <a href="404.html" class="btn-hero-secondary">
+            <i class="fas fa-phone"></i> Report Emergency
+          </a>
+        </div>
+      </div>
+      <div class="hero-alert-card">
+        <div class="hero-alert-header">
+          <span class="label">
+            <span class="live-dot"></span> Live Alerts
+          </span>
+          <span class="count">4 Active</span>
+        </div>
+        <div class="alert-item">
+          <span class="location"><i class="fas fa-location-dot"></i> Coastal Region A</span>
+          <span class="level-badge level-critical">Critical</span>
+        </div>
+        <div class="alert-item">
+          <span class="location"><i class="fas fa-location-dot"></i> Northern Valley</span>
+          <span class="level-badge level-high">High</span>
+        </div>
+        <div class="alert-item">
+          <span class="location"><i class="fas fa-location-dot"></i> Central Plains</span>
+          <span class="level-badge level-moderate">Moderate</span>
+        </div>
+        <div class="alert-item">
+          <span class="location"><i class="fas fa-location-dot"></i> Eastern Shore</span>
+          <span class="level-badge level-moderate">Moderate</span>
+        </div>
+        <div class="hero-alert-footer">
+          <a href="404.html">View Full Dashboard <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMERGENCY BANNER (red) -->
+  
+  <!-- STATS (white) -->
+  <section class="stats-section section section-white">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fas fa-earth-americas"></i></div>
+          <h3>1,247</h3>
+          <p>Disasters Responded</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange"><i class="fas fa-heart"></i></div>
+          <h3>12,500+</h3>
+          <p>Lives Saved</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3>8,900</h3>
+          <p>Active Volunteers</p>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fas fa-building-shield"></i></div>
+          <h3>450+</h3>
+          <p>Partner Organizations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT (cream) -->
+  <section class="about-section section section-cream">
+    <div class="container">
+      <div class="about-visual reveal-left">
+        <div class="about-video-wrapper">
+          <img src="about1.webp" alt="About DisasterGuard">
+          <div class="about-video-overlay"></div>
+        </div>
+        <div class="about-experience">
+          <h4>10+</h4>
+          <p>Years of Excellence</p>
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <span class="section-subtitle"><i class="fas fa-info-circle"></i> About Us</span>
+        <h2>Your Safety Is Our <span class="highlight">Mission</span></h2>
+        <p>DisasterGuard is a next-generation disaster management platform combining AI-powered threat detection, real-time monitoring, and coordinated emergency response to protect communities before, during, and after disasters.</p>
+        <p>Founded in 2015, our team of experts works around the clock — monitoring seismic activity, weather patterns, and emerging threats across 4 regions to provide early warnings and rapid response coordination.</p>
+        <div class="about-stats-mini">
+          <div class="about-stat-mini">
+ <h4>10+</h4>
+            <p>Years Active</p>
+          </div>
+          <div class="about-stat-mini">
+ <h4>24/7</h4>
+            <p>Monitoring</p>
+          </div>
+          <div class="about-stat-mini">
+ <h4>99.9%</h4>
+            <p>Uptime</p>
+          </div>
+        </div>
+        <a href="404.html" class="btn-hero-primary" style="display:inline-flex;">
+          <i class="fas fa-arrow-right"></i> Learn Our Story
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES (blush pink) -->
+  <section id="services" class="section section-blush">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-subtitle"><i class="fas fa-bolt"></i> What We Offer</span>
+        <h2>Comprehensive <span class="highlight">Response Services</span></h2>
+        <p>End-to-end disaster management solutions designed to protect communities, coordinate response, and accelerate recovery.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal-scale">
+          <div class="service-icon red"><i class="fas fa-bell"></i></div>
+          <h3>Emergency Alert System</h3>
+          <p>Multi-channel real-time alerts via SMS, push, email, and sirens. AI-powered threat detection with 95% accuracy within seconds.</p>
+        </div>
+        <div class="service-card reveal-scale" style="transition-delay:0.1s;">
+          <div class="service-icon orange"><i class="fas fa-truck-medical"></i></div>
+          <h3>Rapid Response Teams</h3>
+          <p>Strategically positioned units deploy within 15 minutes. Mobile command centers, SAR teams, and medical response vehicles.</p>
+        </div>
+        <div class="service-card reveal-scale" style="transition-delay:0.2s;">
+          <div class="service-icon blue"><i class="fas fa-kit-medical"></i></div>
+          <h3>Emergency Medical Aid</h3>
+          <p>Field hospitals, mobile surgical units, and stocked pharmacies. Coordinated with 200+ hospitals for patient transfer.</p>
+        </div>
+        <div class="service-card reveal-scale" style="transition-delay:0.3s;">
+          <div class="service-icon purple"><i class="fas fa-people-arrows"></i></div>
+          <h3>Evacuation & Shelter</h3>
+          <p>Route planning, transport coordination, and shelter management. Capacity for 50,000+ displaced persons across 40+ shelters.</p>
+        </div>
+        <div class="service-card reveal-scale" style="transition-delay:0.4s;">
+          <div class="service-icon teal"><i class="fas fa-chart-line"></i></div>
+          <h3>Risk Assessment</h3>
+          <p>GIS-based vulnerability mapping, scenario modeling, and predictive analytics to identify high-risk zones before disaster strikes.</p>
+        </div>
+        <div class="service-card reveal-scale" style="transition-delay:0.5s;">
+          <div class="service-icon pink"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3>Community Recovery</h3>
+          <p>Post-disaster rebuilding, mental health support, economic revitalization, and resilience training for long-term community strength.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="404.html" class="btn-hero-primary"><i class="fas fa-arrow-right"></i> View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALERTS (dark - needs contrast) -->
+  <section class="alerts-section section">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-subtitle"><i class="fas fa-triangle-exclamation"></i> Real-Time</span>
+        <h2>Active <span class="highlight">Alerts</span></h2>
+        <p>Stay informed with real-time disaster alerts and emergency notifications across all monitored regions.</p>
+      </div>
+      <div class="alert-marquee reveal">
+        <span class="marquee-label">
+          <span class="live-dot"></span> Breaking
+        </span>
+        <div class="marquee-text">
+          <span>Severe Flood Warning — Coastal Region A: Evacuate low-lying areas immediately.</span>
+          <span>High Wind Advisory — Northern Valley: 80 mph gusts expected. Secure outdoor objects.</span>
+          <span>Earthquake Aftershocks — Eastern Shore: Minor tremors. No tsunami risk.</span>
+          <span>Wildfire Risk — Central Plains: Extreme dry conditions. No burn orders in effect.</span>
+        </div>
+      </div>
+      <div class="alerts-grid">
+        <div class="alert-card reveal">
+          <div class="alert-icon critical"><i class="fas fa-water"></i></div>
+          <div class="alert-info">
+            <h4>Coastal Region A — Flood Warning</h4>
+            <p>Severe flooding expected within 4 hours. Mandatory evacuation in effect for zones 1-5.</p>
+            <div class="meta">
+              <span class="severity critical">Critical</span>
+              <span class="time">12m ago</span>
+              <span><i class="fas fa-map-pin"></i> 3 counties affected</span>
+            </div>
+          </div>
+        </div>
+        <div class="alert-card reveal" style="transition-delay:0.1s;">
+          <div class="alert-icon high"><i class="fas fa-wind"></i></div>
+          <div class="alert-info">
+            <h4>Northern Valley — Storm Watch</h4>
+            <p>Sustained winds of 70-80 mph expected within 12 hours. Prepare for power outages and secure outdoor objects.</p>
+            <div class="meta">
+              <span class="severity high">High</span>
+              <span class="time">28m ago</span>
+              <span><i class="fas fa-map-pin"></i> 6 municipalities</span>
+            </div>
+          </div>
+        </div>
+        <div class="alert-card reveal" style="transition-delay:0.2s;">
+          <div class="alert-icon moderate"><i class="fas fa-fire"></i></div>
+          <div class="alert-info">
+            <h4>Central Plains — Wildfire Advisory</h4>
+            <p>Elevated fire risk due to prolonged drought. No outdoor burning permitted. Stay alert for updates.</p>
+            <div class="meta">
+              <span class="severity moderate">Moderate</span>
+              <span class="time">1h ago</span>
+              <span><i class="fas fa-map-pin"></i> 5 rural districts</span>
+            </div>
+          </div>
+        </div>
+        <div class="alert-card reveal" style="transition-delay:0.3s;">
+          <div class="alert-icon moderate"><i class="fas fa-mountain"></i></div>
+          <div class="alert-info">
+            <h4>Eastern Shore — Aftershock Monitoring</h4>
+            <p>Minor aftershocks (M2.5-3.8) continuing from Tuesday's M5.9 event. No structural damage. Tsunami risk clear.</p>
+            <div class="meta">
+              <span class="severity moderate">Moderate</span>
+              <span class="time">2h ago</span>
+              <span><i class="fas fa-map-pin"></i> Coastal monitoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="404.html" class="btn-hero-secondary">View Full Dashboard <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE (lavender) -->
+  <section class="section section-lavender">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-subtitle"><i class="fas fa-timeline"></i> Our Journey</span>
+        <h2>Impact <span class="highlight">Timeline</span></h2>
+        <p>From a small volunteer initiative to a global disaster management force — our story of growth and impact.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="year">2015</span>
+            <h4>Foundation</h4>
+            <p>DisasterGuard founded by Dr. Alex Mercer and a team of emergency response experts following the devastating hurricane season of 2014.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot blue"></div>
+          <div class="timeline-content">
+            <span class="year">2017</span>
+            <h4>First Major Response</h4>
+            <p>Coordinated response to Hurricane Atlas — deployed 500+ volunteers, evacuated 12,000 residents, established 15 emergency shelters.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot purple"></div>
+          <div class="timeline-content">
+            <span class="year">2020</span>
+            <h4>AI Alert System Launch</h4>
+            <p>Launched AI-powered threat detection platform, reducing average alert time from 45 minutes to under 30 seconds across 4 regions.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot teal"></div>
+          <div class="timeline-content">
+            <span class="year">2023</span>
+            <h4>Global Expansion</h4>
+            <p>Expanded operations to 12 countries, partnered with 450+ organizations, responded to 200+ disaster events in a single year.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="year">2026</span>
+            <h4>Next-Gen Platform</h4>
+            <p>Launch of DisasterGuard v3.0 with satellite integration, drone-based damage assessment, and real-time 3D disaster modeling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED SECTIONS (combined background) -->
+  <div class="trusted-wrap">
+    <section class="section section-peach">
+      <div class="container">
+        <div class="section-title-wrap reveal">
+          <span class="section-subtitle"><i class="fas fa-quote-left"></i> Testimonials</span>
+          <h2>Trusted by <span class="highlight">Communities</span></h2>
+          <p>Hear from the people and organizations who rely on DisasterGuard to keep their communities safe.</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal-scale">
+            <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"DisasterGuard's early warning system gave our community six hours to evacuate before the flood hit. Their team was nothing short of heroic."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:url('Maria.webp') center/cover no-repeat;"></div>
+              <div>
+                <h4>Maria Santos</h4>
+                <span>Coastal Region Resident</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card reveal-scale" style="transition-delay:0.15s;">
+            <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"As a first responder, the coordination tools are unmatched. Real-time data and seamless communication made our response three times faster than before."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:url('James.webp') center/cover no-repeat;"></div>
+              <div>
+                <h4>James Rodriguez</h4>
+                <span>Emergency Responder</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card reveal-scale" style="transition-delay:0.3s;">
+            <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p>"The preparedness training transformed our community's resilience. We went from being vulnerable to feeling empowered to handle any disaster."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background:url('sara.webp') center/cover no-repeat;"></div>
+ <div>
+                <h4>Sarah Chen</h4>
+                <span>Community Leader</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners-section section section-white">
+      <div class="container">
+        <div class="section-title-wrap reveal" style="margin-bottom:40px;">
+          <span class="section-subtitle"><i class="fas fa-handshake"></i> Partners</span>
+          <h2>Trusted by <span class="highlight">Leading Organizations</span></h2>
+        </div>
+        <div class="partners-track reveal">
+          <span class="partner-item"><i class="fas fa-building"></i> FEMA</span>
+          <span class="partner-item"><i class="fas fa-building"></i> Red Cross</span>
+          <span class="partner-item"><i class="fas fa-building"></i> WHO</span>
+          <span class="partner-item"><i class="fas fa-building"></i> UNICEF</span>
+          <span class="partner-item"><i class="fas fa-building"></i> NOAA</span>
+          <span class="partner-item"><i class="fas fa-building"></i> USAID</span>
+          <span class="partner-item"><i class="fas fa-building"></i> World Bank</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- BLOG (mint) -->
+  <section class="section section-mint">
+    <div class="container">
+      <div class="section-title-wrap reveal">
+        <span class="section-subtitle"><i class="fas fa-newspaper"></i> Resources</span>
+        <h2>Latest <span class="highlight">Articles</span></h2>
+        <p>Expert guides, preparedness tips, and community stories to help you stay informed and ready.</p>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card reveal-scale">
+          <div class="blog-thumb" style="background:url('hurricane.webp') center/cover no-repeat;">
+            <span class="category-tag emergency">Emergency</span>
+            <i class="fas fa-hurricane"></i>
+          </div>
+          <div class="blog-body">
+            <div class="date"><i class="far fa-calendar"></i> June 20, 2026</div>
+            <h3>Hurricane Preparedness: Complete Family Safety Guide</h3>
+            <p>Essential steps every family should take before, during, and after a hurricane — from evacuation planning to emergency kit essentials.</p>
+            <a href="404.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="blog-card reveal-scale" style="transition-delay:0.15s;">
+          <div class="blog-thumb" style="background:url('kit.webp') center/cover no-repeat;">
+            <span class="category-tag preparedness">Preparedness</span>
+            <i class="fas fa-toolbox"></i>
+          </div>
+          <div class="blog-body">
+            <div class="date"><i class="far fa-calendar"></i> June 18, 2026</div>
+            <h3>Build the Ultimate Emergency Kit on Any Budget</h3>
+            <p>A practical step-by-step guide to assembling a comprehensive emergency kit with essentials for your family without overspending.</p>
+            <a href="404.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="blog-card reveal-scale" style="transition-delay:0.3s;">
+          <div class="blog-thumb" style="background:url('safety.webp') center/cover no-repeat;">
+            <span class="category-tag tips">Safety Tips</span>
+            <i class="fas fa-house-chimney"></i>
+          </div>
+          <div class="blog-body">
+            <div class="date"><i class="far fa-calendar"></i> June 15, 2026</div>
+            <h3>Earthquake Safety: Drop, Cover & Hold On Masterclass</h3>
+            <p>Learn the correct life-saving techniques to protect yourself during an earthquake, whether you're at home, work, or outdoors.</p>
+            <a href="404.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px;">
+        <a href="404.html" class="btn-hero-primary"><i class="fas fa-arrow-right"></i> View All Articles</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA (dark video) -->
+  <section class="cta-section section">
+    <video class="cta-bg-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1581091226825-a6a2a5ee158?w=1920&q=80">
+      <source src="https://cdn.coverr.co/videos/coverr-sunrise-over-the-mountains-2539/1080p.mp4" type="video/mp4">
+    </video>
+    <div class="cta-overlay"></div>
+    <div class="container">
+      <div class="cta-content reveal">
+        <h2>Ready to Make Your <span class="highlight">Community Safer</span>?</h2>
+        <p>Join thousands of communities, organizations, and first responders who trust DisasterGuard for their disaster preparedness and response needs.</p>
+        <div class="cta-buttons">
+          <a href="404.html" class="btn-hero-primary"><i class="fas fa-calendar"></i> Schedule a Demo</a>
+          <a href="404.html" class="btn-hero-secondary"><i class="fas fa-download"></i> Download Resources</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER (gradient) -->
+  <section class="newsletter-section">
+    <div class="doodle"><i class="fas fa-shield-halved"></i></div>
+    <div class="doodle"><i class="fas fa-hurricane"></i></div>
+    <div class="doodle"><i class="fas fa-kit-medical"></i></div>
+    <div class="doodle"><i class="fas fa-triangle-exclamation"></i></div>
+    <div class="doodle"><i class="fas fa-house-chimney"></i></div>
+    <div class="doodle"><i class="fas fa-fire"></i></div>
+    <div class="doodle"><i class="fas fa-droplet"></i></div>
+    <div class="doodle"><i class="fas fa-truck-fast"></i></div>
+    <div class="container">
+      <h2>Stay Alert, Stay Safe</h2>
+      <p>Subscribe to receive real-time disaster alerts, expert guides, and community updates directly to your inbox.</p>
+      <form class="newsletter-form" action="404.html">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit"><i class="fas fa-bell"></i> Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER (dark) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <img src="logo.webp" alt="DisasterGuard" style="height:45px;filter:brightness(0) saturate(100%) invert(58%) sepia(100%) saturate(500%) hue-rotate(-30deg);">
+          <p>Your trusted partner in disaster preparedness, response, and recovery. We combine cutting-edge technology with compassionate human response to protect communities worldwide.</p>
+          <div class="footer-social">
+            <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Emergency Alerts</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Rapid Response</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Medical Aid</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Evacuation Support</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Risk Assessment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Info</h4>
+          <ul class="footer-contact">
+            <li><a href="404.html"><i class="fas fa-map-marker-alt"></i> 123 Safety Ave, Emergency City, EC 10001</a></li>
+            <li><a href="404.html"><i class="fas fa-phone-alt"></i> +1 (800) 555-0199</a></li>
+            <li><a href="404.html"><i class="fas fa-envelope"></i> alert@disasterguard.org</a></li>
+            <li><a href="404.html"><i class="fas fa-clock"></i> 24/7 Emergency Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DisasterGuard. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Cookie Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

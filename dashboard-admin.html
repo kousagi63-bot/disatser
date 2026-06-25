@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — DisasterGuard</title>
+  <meta name="description" content="Admin dashboard for managing DisasterGuard emergency alerts, users, and resources.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <style>
+    body { cursor: default; }
+    a, button, [role="button"], input, select, textarea, label, .quick-action-btn, .resource-item, .dashboard-notify, .badge-role, .sidebar-menu a, .card-header a, .stat-icon { cursor: pointer; }
+    .dashboard-topbar { display: flex; align-items: center; padding: 12px 24px; background: var(--card-bg); border-bottom: 1px solid var(--card-border); position: relative; z-index: 10; }
+    .dashboard-topbar .logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .dashboard-topbar .logo-link svg { flex-shrink: 0; }
+    .dashboard-topbar .logo-text { font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  </style>
+</head>
+<body>
+
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="dashboard-topbar">
+    <a href="index.html" class="logo-link">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <rect x="2" y="18" width="28" height="10" rx="3" fill="url(#sg1)"/>
+        <rect x="4" y="10" width="24" height="10" rx="3" fill="url(#sg2)"/>
+        <rect x="7" y="2" width="18" height="10" rx="3" fill="url(#sg3)"/>
+        <defs>
+          <linearGradient id="sg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff3b30"/><stop offset="100%" stop-color="#ff9500"/></linearGradient>
+          <linearGradient id="sg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff9500"/><stop offset="100%" stop-color="#00b4d8"/></linearGradient>
+          <linearGradient id="sg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00b4d8"/><stop offset="100%" stop-color="#7b2ff7"/></linearGradient>
+        </defs>
+      </svg>
+      <span class="logo-text">STACKLY</span>
+    </a>
+  </div>
+
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <div class="sidebar-heading">Main</div>
+      <ul class="sidebar-menu">
+        <li><a href="#dashboard" class="active" data-section="dashboard"><i class="fas fa-chart-pie"></i> Dashboard</a></li>
+        <li><a href="#users" data-section="users"><i class="fas fa-users"></i> Users</a></li>
+        <li><a href="#alerts" data-section="alerts"><i class="fas fa-bell"></i> Emergency Alerts</a></li>
+        <li><a href="#resources" data-section="resources"><i class="fas fa-boxes"></i> Resources</a></li>
+      </ul>
+      <div class="sidebar-heading">Management</div>
+      <ul class="sidebar-menu">
+        <li><a href="#reports" data-section="reports"><i class="fas fa-file-alt"></i> Reports</a></li>
+        <li><a href="#training" data-section="training"><i class="fas fa-calendar"></i> Training</a></li>
+        <li><a href="#blog-posts" data-section="blog-posts"><i class="fas fa-newspaper"></i> Blog Posts</a></li>
+        <li><a href="#concern-info" data-section="concern-info"><i class="fas fa-exclamation-triangle"></i> Concern Information</a></li>
+        </ul>
+      <div class="sidebar-heading">System</div>
+      <ul class="sidebar-menu">
+        <li><a href="#settings" data-section="settings"><i class="fas fa-cog"></i> Settings</a></li>
+        <li><a href="#audit-log" data-section="audit-log"><i class="fas fa-shield-alt"></i> Audit Log</a></li>
+        <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </aside>
+
+    <div class="dashboard-sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="dashboard-main">
+      <div class="dashboard-header">
+        <div>
+          <h1>Admin Dashboard</h1>
+          <p>Welcome back, Admin. Here is your system overview.</p>
+        </div>
+        <div class="dashboard-header-right">
+          <button class="dashboard-notify" id="mobileSidebarToggle" style="display:none;">
+            <i class="fas fa-bars"></i>
+          </button>
+          <a href="404.html" class="dashboard-notify">
+            <i class="fas fa-bell"></i>
+            <span class="badge-dot"></span>
+          </a>
+          <div class="dashboard-avatar">A</div>
+        </div>
+      </div>
+
+      <div id="section-dashboard" class="dashboard-section active">
+        <div class="dashboard-stats">
+          <div class="dashboard-stat-card">
+            <div class="stat-top">
+              <div class="stat-icon red"><i class="fas fa-users"></i></div>
+              <i class="fas fa-arrow-up" style="color:#22c55e;font-size:0.85rem;"></i>
+            </div>
+            <div class="stat-number">2,847</div>
+            <div class="stat-label">Total Users</div>
+            <div class="stat-change up">+12% this month</div>
+          </div>
+          <div class="dashboard-stat-card">
+            <div class="stat-top">
+              <div class="stat-icon orange"><i class="fas fa-bell"></i></div>
+              <i class="fas fa-arrow-up" style="color:#22c55e;font-size:0.85rem;"></i>
+            </div>
+            <div class="stat-number">14</div>
+            <div class="stat-label">Active Alerts</div>
+            <div class="stat-change up">+3 new today</div>
+          </div>
+          <div class="dashboard-stat-card">
+            <div class="stat-top">
+              <div class="stat-icon blue"><i class="fas fa-boxes"></i></div>
+              <i class="fas fa-arrow-down" style="color:var(--primary);font-size:0.85rem;"></i>
+            </div>
+            <div class="stat-number">1,203</div>
+            <div class="stat-label">Resources Deployed</div>
+            <div class="stat-change down">-2% this week</div>
+          </div>
+          <div class="dashboard-stat-card">
+            <div class="stat-top">
+              <div class="stat-icon purple"><i class="fas fa-city"></i></div>
+              <i class="fas fa-arrow-up" style="color:#22c55e;font-size:0.85rem;"></i>
+            </div>
+            <div class="stat-number">48</div>
+            <div class="stat-label">Communities Served</div>
+            <div class="stat-change up">+2 this month</div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-users" style="color:var(--primary);margin-right:8px;"></i> Recent Users</h3>
+              <a href="404.html">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card-body">
+              <div class="dashboard-table-wrapper">
+              <table class="dashboard-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Joined</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-red">JD</div>
+                        <span>John Davis</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">User</span></td>
+                    <td><span class="badge-status active">Active</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">2d ago</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-purple">SM</div>
+                        <span>Sarah Mitchell</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role admin">Admin</span></td>
+                    <td><span class="badge-status active">Active</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">3d ago</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-blue">MR</div>
+                        <span>Mike Roberts</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">User</span></td>
+                    <td><span class="badge-status pending">Pending</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">5d ago</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-orange">EL</div>
+                        <span>Emily Lee</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">User</span></td>
+                    <td><span class="badge-status active">Active</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">1w ago</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-teal">CW</div>
+                        <span>Carlos Wong</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">User</span></td>
+                    <td><span class="badge-status suspended">Suspended</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">2w ago</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div></div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-bell" style="color:var(--secondary);margin-right:8px;"></i> Active Alerts</h3>
+              <a href="#alerts" data-section="alerts">Manage <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card-body">
+              <div class="alert-list-item">
+                <div class="alert-dot critical"></div>
+                <div class="alert-text">
+                  <strong>Hurricane Warning — Zone A</strong>
+                  <span>Category 3 hurricane approaching. Evacuation ordered.</span>
+                </div>
+                <div class="alert-time">5m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Flood Advisory — River Basin</strong>
+                  <span>Water levels rising rapidly. Prepare for flooding.</span>
+                </div>
+                <div class="alert-time">18m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot critical"></div>
+                <div class="alert-text">
+                  <strong>Earthquake Aftershock — North Ridge</strong>
+                  <span>Magnitude 4.2 aftershock detected. Stay sheltered.</span>
+                </div>
+                <div class="alert-time">42m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Wildfire Smoke Advisory</strong>
+                  <span>Air quality index unhealthy for sensitive groups.</span>
+                </div>
+                <div class="alert-time">1h ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Severe Thunderstorm Watch</strong>
+                  <span>High winds and hail possible in southern counties.</span>
+                </div>
+                <div class="alert-time">2h ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-bolt" style="color:var(--accent);margin-right:8px;"></i> Quick Actions</h3>
+            </div>
+            <div class="card-body">
+              <div class="quick-actions">
+                <a href="404.html" class="quick-action-btn">
+                  <i class="fas fa-bell"></i>
+                  <span>New Alert</span>
+                </a>
+                <a href="404.html" class="quick-action-btn">
+                  <i class="fas fa-user-plus"></i>
+                  <span>Add User</span>
+                </a>
+                <a href="404.html" class="quick-action-btn">
+                  <i class="fas fa-file-export"></i>
+                  <span>Generate Report</span>
+                </a>
+                <a href="404.html" class="quick-action-btn">
+                  <i class="fas fa-broadcast-tower"></i>
+                  <span>Broadcast</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-boxes" style="color:var(--purple);margin-right:8px;"></i> Resource Overview</h3>
+              <a href="404.html">Details <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="card-body">
+              <div class="resource-grid">
+                <a href="404.html" class="resource-item">
+                  <i class="fas fa-truck red"></i>
+                  <div class="res-text">
+                    <strong>Relief Trucks</strong>
+                    <span>24 deployed</span>
+                  </div>
+                </a>
+                <a href="404.html" class="resource-item">
+                  <i class="fas fa-hospital orange"></i>
+                  <div class="res-text">
+                    <strong>Medical Kits</strong>
+                    <span>540 available</span>
+                  </div>
+                </a>
+                <a href="404.html" class="resource-item">
+                  <i class="fas fa-water blue"></i>
+                  <div class="res-text">
+                    <strong>Water Supplies</strong>
+                    <span>3,200 gallons</span>
+                  </div>
+                </a>
+                <a href="404.html" class="resource-item">
+                  <i class="fas fa-people-arrows purple"></i>
+                  <div class="res-text">
+                    <strong>Volunteers</strong>
+                    <span>186 active</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-users" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-users" style="color:var(--primary);margin-right:8px;"></i> User Directory</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="dashboard-table-wrapper">
+              <table class="dashboard-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Last Login</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-red">JD</div>
+                        <span>John Davis</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">User</span></td>
+                    <td><span class="badge-status active">Active</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">Today</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-purple">SM</div>
+                        <span>Sarah Mitchell</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role admin">Admin</span></td>
+                    <td><span class="badge-status active">Active</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">1h ago</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-blue">MR</div>
+                        <span>Mike Roberts</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">User</span></td>
+                    <td><span class="badge-status pending">Pending</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">2d ago</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-orange">EL</div>
+                        <span>Emily Lee</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">User</span></td>
+                    <td><span class="badge-status active">Active</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">4d ago</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-teal">CW</div>
+                        <span>Carlos Wong</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">User</span></td>
+                    <td><span class="badge-status suspended">Suspended</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">1w ago</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-alerts" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-bell" style="color:var(--secondary);margin-right:8px;"></i> Emergency Alerts</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="alert-list-item">
+                <div class="alert-dot critical"></div>
+                <div class="alert-text">
+                  <strong>Hurricane Warning — Zone A</strong>
+                  <span>Category 3 hurricane approaching. Evacuation ordered.</span>
+                </div>
+                <div class="alert-time">5m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Flood Advisory — River Basin</strong>
+                  <span>Water levels rising rapidly. Prepare for flooding.</span>
+                </div>
+                <div class="alert-time">18m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot critical"></div>
+                <div class="alert-text">
+                  <strong>Earthquake Aftershock — North Ridge</strong>
+                  <span>Magnitude 4.2 aftershock detected. Stay sheltered.</span>
+                </div>
+                <div class="alert-time">42m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Wildfire Smoke Advisory</strong>
+                  <span>Air quality index unhealthy for sensitive groups.</span>
+                </div>
+                <div class="alert-time">1h ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Severe Thunderstorm Watch</strong>
+                  <span>High winds and hail possible in southern counties.</span>
+                </div>
+                <div class="alert-time">2h ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-resources" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-boxes" style="color:var(--purple);margin-right:8px;"></i> Resources</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="resource-grid">
+                <a href="404.html" class="resource-item">
+                  <i class="fas fa-truck red"></i>
+                  <div class="res-text">
+                    <strong>Relief Trucks</strong>
+                    <span>24 deployed</span>
+                  </div>
+                </a>
+                <a href="404.html" class="resource-item">
+                  <i class="fas fa-hospital orange"></i>
+                  <div class="res-text">
+                    <strong>Medical Kits</strong>
+                    <span>540 available</span>
+                  </div>
+                </a>
+                <a href="404.html" class="resource-item">
+                  <i class="fas fa-water blue"></i>
+                  <div class="res-text">
+                    <strong>Water Supplies</strong>
+                    <span>3,200 gallons</span>
+                  </div>
+                </a>
+                <a href="404.html" class="resource-item">
+                  <i class="fas fa-people-arrows purple"></i>
+                  <div class="res-text">
+                    <strong>Volunteers</strong>
+                    <span>186 active</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-reports" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-file-alt" style="color:var(--primary);margin-right:8px;"></i> Reports</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="quick-actions">
+                <a class="quick-action-btn"><i class="fas fa-file-signature"></i><span>Incident Report</span></a>
+                <a class="quick-action-btn"><i class="fas fa-chart-line"></i><span>Response Summary</span></a>
+                <a class="quick-action-btn"><i class="fas fa-users"></i><span>Staff Review</span></a>
+                <a class="quick-action-btn"><i class="fas fa-envelope-open-text"></i><span>Communication</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-training" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-calendar" style="color:var(--secondary);margin-right:8px;"></i> Training</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Emergency First Aid</strong>
+                  <span>April 28, 2026 · 10:00 AM · 36 attendees</span>
+                </div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Evacuation Planning</strong>
+                  <span>May 3, 2026 · 2:00 PM · 28 attendees</span>
+                </div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Disaster Communication</strong>
+                  <span>May 10, 2026 · 11:00 AM · 42 attendees</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-blog-posts" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-newspaper" style="color:var(--purple);margin-right:8px;"></i> Blog Posts</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="quick-actions">
+                <a class="quick-action-btn"><i class="fas fa-edit"></i><span>Drafts</span></a>
+                <a class="quick-action-btn"><i class="fas fa-eye"></i><span>Published</span></a>
+                <a class="quick-action-btn"><i class="fas fa-calendar-alt"></i><span>Schedule</span></a>
+                <a class="quick-action-btn"><i class="fas fa-share-square"></i><span>Promotions</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-concern-info" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card" style="grid-column: span 2;">
+            <div class="card-header">
+              <h3><i class="fas fa-exclamation-triangle" style="color:var(--secondary);margin-right:8px;"></i> Concern Information</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="dashboard-table-wrapper">
+              <table class="dashboard-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Reporter</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">#001</td>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-red">MR</div>
+                        <span>Maria Rodriguez</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role admin">Structural</span></td>
+                    <td style="color:var(--white);">Building damage after earthquake</td>
+                    <td><span class="badge-status active">Resolved</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">Today</td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">#002</td>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-orange">JT</div>
+                        <span>James Thompson</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">Medical</span></td>
+                    <td style="color:var(--white);">Shortage of medical supplies at shelter</td>
+                    <td><span class="badge-status pending">In Progress</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">Yesterday</td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">#003</td>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-blue">SL</div>
+                        <span>Sarah Lee</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">Food</span></td>
+                    <td style="color:var(--white);">Insufficient food supplies in Zone C</td>
+                    <td><span class="badge-status active">Resolved</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">2d ago</td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">#004</td>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-purple">DK</div>
+                        <span>David Kim</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role admin">Safety</span></td>
+                    <td style="color:var(--white);">Flood barrier compromised in River District</td>
+                    <td><span class="badge-status suspended">Critical</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">3d ago</td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">#005</td>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-teal">AN</div>
+                        <span>Anna Nguyen</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">Relocation</span></td>
+                    <td style="color:var(--white);">Request for family relocation assistance</td>
+                    <td><span class="badge-status pending">In Progress</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">4d ago</td>
+                  </tr>
+                  <tr>
+                    <td style="color:var(--white);font-weight:600;">#006</td>
+                    <td>
+                      <div class="user-cell">
+                        <div class="user-avatar avatar-red">CW</div>
+                        <span>Carlos Wong</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-role user">Communication</span></td>
+                    <td style="color:var(--white);">No cell service in evacuation zone</td>
+                    <td><span class="badge-status active">Resolved</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">1w ago</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div></div>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-chart-pie" style="color:var(--primary);margin-right:8px;"></i> Concern Categories</h3>
+            </div>
+            <div class="card-body">
+              <div class="resource-grid">
+                <div class="resource-item">
+                  <i class="fas fa-building orange"></i>
+                  <div class="res-text">
+                    <strong>Structural</strong>
+                    <span>12 reports</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-heartbeat red"></i>
+                  <div class="res-text">
+                    <strong>Medical</strong>
+                    <span>28 reports</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-utensils blue"></i>
+                  <div class="res-text">
+                    <strong>Food</strong>
+                    <span>19 reports</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-shield-halved purple"></i>
+                  <div class="res-text">
+                    <strong>Safety</strong>
+                    <span>9 reports</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-truck teal"></i>
+                  <div class="res-text">
+                    <strong>Relocation</strong>
+                    <span>15 reports</span>
+                  </div>
+                </div>
+                <div class="resource-item">
+                  <i class="fas fa-satellite-dish orange"></i>
+                  <div class="res-text">
+                    <strong>Communication</strong>
+                    <span>7 reports</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-clock" style="color:var(--accent);margin-right:8px;"></i> Recent Activity</h3>
+            </div>
+            <div class="card-body">
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Concern #004 escalated to Critical</strong>
+                  <span>Flood barrier issue requires immediate attention</span>
+                </div>
+                <div class="alert-time">30m ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot high"></div>
+                <div class="alert-text">
+                  <strong>Concern #002 assigned to response team</strong>
+                  <span>Medical supply shortage being addressed</span>
+                </div>
+                <div class="alert-time">2h ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot critical"></div>
+                <div class="alert-text">
+                  <strong>New concern #007 submitted</strong>
+                  <span>Power line down in residential area</span>
+                </div>
+                <div class="alert-time">4h ago</div>
+              </div>
+              <div class="alert-list-item">
+                <div class="alert-dot moderate"></div>
+                <div class="alert-text">
+                  <strong>Concern #001 marked as Resolved</strong>
+                  <span>Building damage inspection completed</span>
+                </div>
+                <div class="alert-time">6h ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-settings" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-cog" style="color:var(--text-light);margin-right:8px;"></i> System Settings</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="setting-item">
+                <span>Enable alerts</span>
+                <span>On</span>
+              </div>
+              <div class="setting-item">
+                <span>Auto report generation</span>
+                <span>Off</span>
+              </div>
+              <div class="setting-item">
+                <span>Maintenance mode</span>
+                <span>Off</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="section-audit-log" class="dashboard-section">
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <div class="card-header">
+              <h3><i class="fas fa-shield-alt" style="color:var(--primary);margin-right:8px;"></i> Audit Log</h3>
+              <a href="#dashboard" data-section="dashboard">Back to Overview</a>
+            </div>
+            <div class="card-body">
+              <div class="dashboard-table-wrapper">
+              <table class="dashboard-table">
+                <thead>
+                  <tr>
+                    <th>Event</th>
+                    <th>User</th>
+                    <th>Status</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Alert created</td>
+                    <td>Sarah Mitchell</td>
+                    <td><span class="badge-status active">Success</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">10m ago</td>
+                  </tr>
+                  <tr>
+                    <td>User added</td>
+                    <td>John Davis</td>
+                    <td><span class="badge-status active">Success</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">45m ago</td>
+                  </tr>
+                  <tr>
+                    <td>Report exported</td>
+                    <td>Mike Roberts</td>
+                    <td><span class="badge-status down">Pending</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">1h ago</td>
+                  </tr>
+                  <tr>
+                    <td>Settings updated</td>
+                    <td>Emily Lee</td>
+                    <td><span class="badge-status active">Success</span></td>
+                    <td style="color:rgba(255,255,255,0.3);">2h ago</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+
+
+  <script src="js/main.js"></script>
+  <script>
+    (function() {
+      const sidebar = document.getElementById('dashboardSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const toggleBtn = document.getElementById('mobileSidebarToggle');
+      const sections = document.querySelectorAll('.dashboard-section');
+      const sidebarLinks = document.querySelectorAll('#dashboardSidebar a[data-section]');
+
+      const sectionMap = {};
+      sections.forEach(function(s) { sectionMap[s.id] = s; });
+
+      function hideAllSections() {
+        sections.forEach(function(s) { s.style.display = 'none'; });
+      }
+
+      function showSection(id) {
+        hideAllSections();
+        var el = sectionMap['section-' + id];
+        if (el) { el.style.display = 'block'; }
+      }
+
+      function deactivateAllLinks() {
+        sidebarLinks.forEach(function(l) { l.classList.remove('active'); });
+      }
+
+      function activateLink(id) {
+        deactivateAllLinks();
+        sidebarLinks.forEach(function(l) {
+          if (l.dataset.section === id) { l.classList.add('active'); }
+        });
+      }
+
+      function navigateTo(sectionId) {
+        showSection(sectionId);
+        activateLink(sectionId);
+        if (sidebar.classList.contains('open')) { toggleSidebar(); }
+      }
+
+      function toggleSidebar() {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('show');
+      }
+
+      sidebarLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var id = this.dataset.section;
+          if (id) { navigateTo(id); }
+        });
+      });
+
+      if (toggleBtn) { toggleBtn.addEventListener('click', toggleSidebar); }
+      overlay.addEventListener('click', toggleSidebar);
+
+      function handleResize() {
+        if (window.innerWidth <= 992) {
+          if (toggleBtn) toggleBtn.style.display = 'flex';
+        } else {
+          if (toggleBtn) toggleBtn.style.display = 'none';
+          sidebar.classList.remove('open');
+          overlay.classList.remove('show');
+        }
+      }
+
+      window.addEventListener('resize', handleResize);
+      handleResize();
+
+      var hash = window.location.hash.replace('#', '');
+      if (hash && sectionMap['section-' + hash]) {
+        navigateTo(hash);
+      } else {
+        navigateTo('dashboard');
+      }
+    })();
+  </script>
+</body>
+</html>

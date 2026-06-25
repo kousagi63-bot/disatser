@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — DisasterGuard</title>
+  <meta name="description" content="Get in touch with DisasterGuard. Report emergencies, request assistance, or reach our 24/7 support team.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span><i class="fas fa-phone-alt"></i> +1 (800) 555-0199</span>
+        <span><i class="fas fa-envelope"></i> alert@disasterguard.org</span>
+        <span><i class="fas fa-clock"></i> 24/7 Emergency</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fas fa-user"></i> Login</a>
+        <a href="contact.html"><i class="fas fa-headset"></i> Support</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.webp" alt="DisasterGuard" style="height:55px;filter:brightness(0) saturate(100%) invert(58%) sepia(100%) saturate(500%) hue-rotate(-30deg);">
+      </a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="login.html" class="btn-hero-primary" style="padding:10px 24px;font-size:0.85rem;">Get Help</a>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="page-header" style="position:relative;overflow:hidden;background:#060914;">
+    <video class="about-bg-video" autoplay muted loop playsinline poster="about1.webp">
+      <source src="contact us.mp4" type="video/mp4">
+    </video>
+    <div class="about-bg-overlay"></div>
+    <div class="container" style="position:relative;z-index:2;color:var(--white);">
+      <h1 style="color:var(--white);">Contact Us</h1>
+      <p style="color:rgba(255,255,255,0.85);">We're here to help — reach out anytime, day or night</p>
+      <div class="breadcrumb" style="color:rgba(255,255,255,0.6);">
+        <a href="index.html" style="color:rgba(255,255,255,0.7);">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <span style="color:var(--white);">Contact</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-cream">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <div class="section-title-wrap reveal" style="margin-bottom:30px;text-align:left;">
+            <span class="section-subtitle"><i class="fas fa-headset"></i> Get in Touch</span>
+            <h2 style="font-size:1.8rem;">We're <span class="highlight">Here to Help</span></h2>
+          </div>
+          <div class="contact-info-grid">
+            <div class="contact-info-card reveal">
+              <i class="fas fa-phone-alt"></i>
+              <h4>Emergency Hotline</h4>
+              <p>+1 (800) 555-0199</p>
+              <span style="font-size:0.75rem;color:var(--primary);font-weight:600;">Available 24/7</span>
+            </div>
+            <div class="contact-info-card reveal" style="transition-delay:0.1s;">
+              <i class="fas fa-envelope"></i>
+              <h4>Email Us</h4>
+              <p>alert@disasterguard.org</p>
+              <span style="font-size:0.75rem;color:var(--section-text-light);">Response within 1 hour</span>
+            </div>
+            <div class="contact-info-card reveal" style="transition-delay:0.2s;">
+              <i class="fas fa-map-marker-alt"></i>
+              <h4>Head Office</h4>
+              <p>123 Safety Avenue</p>
+              <p>Emergency City, EC 10001</p>
+            </div>
+            <div class="contact-info-card reveal" style="transition-delay:0.3s;">
+              <i class="fas fa-clock"></i>
+              <h4>Operating Hours</h4>
+              <p>Emergency: 24/7</p>
+              <p>Office: Mon-Fri 8AM-6PM</p>
+            </div>
+          </div>
+          <div class="contact-info-card" style="background:rgba(255,59,48,0.05);border:1px solid rgba(255,59,48,0.15);margin-top:20px;">
+            <h4 style="color:var(--primary);margin-bottom:10px;"><i class="fas fa-exclamation-triangle"></i> In Case of Emergency</h4>
+            <p style="color:var(--section-text);font-size:0.9rem;margin-bottom:16px;">If you are in immediate danger, call our emergency hotline immediately. Do not use email for urgent situations.</p>
+            <a href="404.html" class="btn-hero-primary"><i class="fas fa-phone"></i> Call Emergency Hotline</a>
+          </div>
+        </div>
+        <div class="contact-form-wrap reveal-right">
+          <h3>Send Us a Message</h3>
+          <form id="contactForm" action="404.html">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="Your email address" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" required>
+                <option value="">Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="emergency">Report Emergency</option>
+                <option value="volunteer">Volunteer Opportunities</option>
+                <option value="partnership">Partnership Request</option>
+                <option value="training">Training & Workshops</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Describe your situation or inquiry in detail..." required></textarea>
+            </div>
+            <button type="submit" class="btn-hero-primary" style="width:100%;justify-content:center;">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:80px 0;text-align:center;position:relative;overflow:hidden;background:#1a1a2e url('visit.webp') center / cover no-repeat fixed;">
+    <div style="position:absolute;inset:0;background:rgba(6,9,20,0.7);"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <i class="fas fa-map-location-dot" style="font-size:4rem;margin-bottom:20px;color:var(--primary);"></i>
+      <h3 style="color:var(--white);margin-bottom:8px;font-size:1.8rem;">Visit Our Headquarters</h3>
+      <p style="color:rgba(255,255,255,0.85);font-size:1.05rem;">123 Safety Avenue, Emergency City, EC 10001<br>Office Hours: Monday — Friday, 8 AM — 6 PM</p>
+    </div>
+  </section>
+
+  <section class="newsletter-section">
+    <div class="doodle"><i class="fas fa-shield-halved"></i></div>
+    <div class="doodle"><i class="fas fa-hurricane"></i></div>
+    <div class="doodle"><i class="fas fa-kit-medical"></i></div>
+    <div class="doodle"><i class="fas fa-triangle-exclamation"></i></div>
+    <div class="doodle"><i class="fas fa-house-chimney"></i></div>
+    <div class="doodle"><i class="fas fa-fire"></i></div>
+    <div class="doodle"><i class="fas fa-droplet"></i></div>
+    <div class="doodle"><i class="fas fa-truck-fast"></i></div>
+    <div class="container">
+      <h2>Stay Connected</h2>
+      <p>Subscribe for disaster alerts, safety tips, and community updates delivered to your inbox.</p>
+      <form class="newsletter-form" action="404.html">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit"><i class="fas fa-bell"></i> Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <img src="logo.webp" alt="DisasterGuard" style="height:45px;filter:brightness(0) saturate(100%) invert(58%) sepia(100%) saturate(500%) hue-rotate(-30deg);">
+          <p>Your trusted partner in disaster preparedness, response, and recovery. We combine cutting-edge technology with compassionate human response.</p>
+          <div class="footer-social">
+            <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Emergency Alerts</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Rapid Response</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Medical Aid</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Evacuation Support</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Risk Assessment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Info</h4>
+          <ul class="footer-contact">
+            <li><a href="404.html"><i class="fas fa-map-marker-alt"></i> 123 Safety Ave, Emergency City, EC 10001</a></li>
+            <li><a href="404.html"><i class="fas fa-phone-alt"></i> +1 (800) 555-0199</a></li>
+            <li><a href="404.html"><i class="fas fa-envelope"></i> alert@disasterguard.org</a></li>
+            <li><a href="404.html"><i class="fas fa-clock"></i> 24/7 Emergency Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DisasterGuard. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

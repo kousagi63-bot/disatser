@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Register — DisasterGuard</title>
+  <meta name="description" content="Sign in or create a DisasterGuard account for emergency alerts, resources, and community access.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="glow-orb"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span><i class="fas fa-phone-alt"></i> +1 (800) 555-0199</span>
+        <span><i class="fas fa-envelope"></i> alert@disasterguard.org</span>
+        <span><i class="fas fa-clock"></i> 24/7 Emergency</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="login.html"><i class="fas fa-user"></i> Login</a>
+        <a href="contact.html"><i class="fas fa-headset"></i> Support</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="logo.webp" alt="DisasterGuard" style="height:55px;filter:brightness(0) saturate(100%) invert(58%) sepia(100%) saturate(500%) hue-rotate(-30deg);">
+      </a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="login.html" class="btn-hero-primary" style="padding:10px 24px;font-size:0.85rem;">Get Help</a>
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="auth-section section-lavender">
+    <div class="auth-container">
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab" data-tab="admin">Admin</button>
+        <button type="button" class="auth-tab active" data-tab="login">User</button>
+        <button type="button" class="auth-tab" data-tab="register">Create Account</button>
+      </div>
+
+      <div class="auth-form active" id="login-form">
+        <h3><i class="fas fa-shield-halved" style="color:var(--primary);"></i> Welcome Back</h3>
+        <form>
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="Enter your password" required>
+            <span class="password-toggle"><i class="fas fa-eye-slash"></i></span>
+          </div>
+          <a href="404.html" class="forgot-password">Forgot password?</a>
+          <div class="form-error" id="login-error"></div>
+          <a href="#" class="btn-hero-primary" style="width:100%;justify-content:center;" data-login="user">
+            <i class="fas fa-right-to-bracket"></i> Login
+          </a>
+          <div class="auth-divider">
+            <span>or continue with</span>
+          </div>
+          <div class="social-login">
+            <a href="404.html" class="btn btn-google"><i class="fab fa-google"></i> Google</a>
+            <a href="404.html" class="btn btn-facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="auth-form" id="admin-form">
+        <h3><i class="fas fa-shield-halved" style="color:var(--primary);"></i> Admin Login</h3>
+        <form>
+          <div class="form-group">
+            <label for="admin-email">Admin Email</label>
+            <input type="email" id="admin-email" placeholder="Enter admin email" required>
+          </div>
+          <div class="form-group">
+            <label for="admin-password">Password</label>
+            <input type="password" id="admin-password" placeholder="Enter admin password" required>
+            <span class="password-toggle"><i class="fas fa-eye-slash"></i></span>
+          </div>
+          <a href="404.html" class="forgot-password">Forgot password?</a>
+          <div class="form-error" id="admin-error"></div>
+          <a href="#" class="btn-hero-primary" style="width:100%;justify-content:center;" data-login="admin">
+            <i class="fas fa-right-to-bracket"></i> Login
+          </a>
+          <div class="auth-divider">
+            <span>or continue with</span>
+          </div>
+          <div class="social-login">
+            <a href="404.html" class="btn btn-google"><i class="fab fa-google"></i> Google</a>
+            <a href="404.html" class="btn btn-facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="auth-form" id="register-form">
+        <h3><i class="fas fa-user-plus" style="color:var(--primary);"></i> Create Account</h3>
+        <form>
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input type="text" id="reg-name" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <input type="password" id="reg-password" placeholder="Create a password" required>
+            <span class="password-toggle"><i class="fas fa-eye-slash"></i></span>
+          </div>
+          <div class="form-group">
+            <label for="reg-confirm">Confirm Password</label>
+            <input type="password" id="reg-confirm" placeholder="Confirm your password" required>
+          </div>
+          <div class="form-group" style="display:flex;align-items:center;gap:10px;">
+            <input type="checkbox" id="terms" style="width:auto;" required>
+            <label for="terms" style="margin:0;font-size:0.85rem;">I agree to the <a href="#" style="color:var(--primary);">Terms of Service</a> and <a href="#" style="color:var(--primary);">Privacy Policy</a></label>
+          </div>
+          <a href="dashboard-user.html" class="btn-hero-primary" style="width:100%;justify-content:center;">
+            <i class="fas fa-user-plus"></i> Sign Up
+          </a>
+          <div class="auth-divider">
+            <span>or sign up with</span>
+          </div>
+          <div class="social-login">
+            <a href="404.html" class="btn btn-google"><i class="fab fa-google"></i> Google</a>
+            <a href="404.html" class="btn btn-facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter-section">
+    <div class="container">
+      <h2>Stay Alert, Stay Safe</h2>
+      <p>Subscribe to receive real-time disaster alerts and community updates.</p>
+      <form class="newsletter-form" action="404.html">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit"><i class="fas fa-bell"></i> Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <img src="logo.webp" alt="DisasterGuard" style="height:45px;filter:brightness(0) saturate(100%) invert(58%) sepia(100%) saturate(500%) hue-rotate(-30deg);">
+          <p>Your trusted partner in disaster preparedness, response, and recovery. We combine cutting-edge technology with compassionate human response.</p>
+          <div class="footer-social">
+            <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Blog</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Emergency Alerts</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Rapid Response</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Medical Aid</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Evacuation Support</a></li>
+            <li><a href="404.html"><i class="fas fa-chevron-right"></i> Risk Assessment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Info</h4>
+          <ul class="footer-contact">
+            <li><a href="404.html"><i class="fas fa-map-marker-alt"></i> 123 Safety Ave, Emergency City, EC 10001</a></li>
+            <li><a href="404.html"><i class="fas fa-phone-alt"></i> +1 (800) 555-0199</a></li>
+            <li><a href="404.html"><i class="fas fa-envelope"></i> alert@disasterguard.org</a></li>
+            <li><a href="404.html"><i class="fas fa-clock"></i> 24/7 Emergency Support</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DisasterGuard. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <style>
+    input[type="password"]::-ms-reveal,
+    input[type="password"]::-ms-clear { display: none; }
+    .auth-form .password-toggle { cursor: pointer; user-select: none; z-index: 2; }
+    .form-error { color: var(--primary); font-size: 0.82rem; margin-bottom: 16px; text-align: center; min-height: 20px; }
+  </style>
+  <script src="js/main.js"></script>
+  <script>
+    (function() {
+      function validateAndSubmit(formId, errorId, redirectUrl) {
+        var form = document.getElementById(formId);
+        var errorEl = document.getElementById(errorId);
+        if (!form || !errorEl) return;
+        var inputs = form.querySelectorAll('input[required]');
+        var allFilled = true;
+        for (var i = 0; i < inputs.length; i++) {
+          if (!inputs[i].value.trim()) {
+            allFilled = false;
+            break;
+          }
+        }
+        if (!allFilled) {
+          errorEl.textContent = 'Please fill in all required details.';
+          return;
+        }
+        errorEl.textContent = '';
+        window.location.href = redirectUrl;
+      }
+      document.querySelectorAll('[data-login]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var type = this.dataset.login;
+          if (type === 'user') {
+            validateAndSubmit('login-form', 'login-error', 'dashboard-user.html');
+          } else if (type === 'admin') {
+            validateAndSubmit('admin-form', 'admin-error', 'dashboard-admin.html');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
